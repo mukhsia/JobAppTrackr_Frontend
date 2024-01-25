@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 
 // Component Imports
 import JobAppItem from '../JobAppItem/JobAppItem';
+import JobAppAddForm from '../JobAppAddForm/JobAppAddForm';
 
 const JobAppList = ({
     applications,
@@ -34,7 +35,7 @@ const JobAppList = ({
         />
     ));
 
-    // TODO: Add / Axios Post
+    // TODO: POST axios request to add an application
 
     return (
         <div>
@@ -45,8 +46,9 @@ const JobAppList = ({
                         <th>Status</th>
                         <th>Company</th>
                         <th>Last Updated</th>
-                        {/* TODO: Add button */}
-                        <th></th>
+                        <th>
+                            <JobAppAddForm />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>{filteredApplications}</tbody>

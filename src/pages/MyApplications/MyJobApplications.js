@@ -33,6 +33,8 @@ const MyJobApplications = () => {
         }
     }
 
+    // TODO: async axios get notes
+
     useEffect(() => {
         fetchApplications();
     }, []);

@@ -2,21 +2,14 @@
 import axios from 'axios';
 
 const JobAppItem = ({ application, onApplicationUpdate }) => {
+    // TODO: PUT axios request to edit application
+
     return (
         <tr>
             <td>{application.title}</td>
-            <td>{application.artist}</td>
-            <td>{application.album}</td>
+            <td>{application.status}</td>
+            <td>{application.company}</td>
             <td>{application.releaseDate}</td>
-            <td>{application.genre}</td>
-            <td>{application.likes}</td>
-            <td>
-                <form onSubmit={handleDelete} className="flex-item">
-                    <button type="submit" className="btn btn-danger">
-                        Delete
-                    </button>
-                </form>
-            </td>
         </tr>
     );
 };
