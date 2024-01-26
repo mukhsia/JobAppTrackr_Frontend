@@ -11,11 +11,12 @@ import useAuth from '../../hooks/useAuth';
 import JobAppList from '../../components/JobAppList/JobAppList';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Application = () => {
+const MyDashboard = ({ fetchApplications }) => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
-    const [applications, setApplications] = useState([]);
+
     const [searchFilter, setSearchFilter] = useState('');
+    const [applications, setApplications] = useState([]);
 
     async function fetchApplications() {
         try {
@@ -33,8 +34,6 @@ const Application = () => {
         }
     }
 
-    // TODO: async axios get notes
-
     useEffect(() => {
         fetchApplications();
     }, []);
@@ -42,4 +41,4 @@ const Application = () => {
     return <div></div>;
 };
 
-export default Application;
+export default MyDashboard;

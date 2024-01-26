@@ -1,7 +1,6 @@
 const SearchField = ({ searchFilter, onChange }) => {
     return (
         <form>
-            return (
             <div>
                 <input
                     value={searchFilter}
@@ -9,7 +8,6 @@ const SearchField = ({ searchFilter, onChange }) => {
                     onChange={(e) => onChange(e.target.value)}
                 />
             </div>
-            );
         </form>
     );
 };
