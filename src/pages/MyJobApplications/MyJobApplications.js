@@ -15,17 +15,20 @@ const MyJobApplications = () => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
     const [applications, setApplications] = useState([]);
+    const [notes, setNotes] = useState([]);
     const [searchFilter, setSearchFilter] = useState('');
+
+    const authHeader = {
+        headers: {
+            Authorization: 'Bearer ' + token,
+        },
+    };
 
     async function fetchApplications() {
         try {
             const response = await axios.get(
                 `https://localhost:5001/api/applications`,
-                {
-                    headers: {
-                        Authorization: 'Bearer ' + token,
-                    },
-                }
+                authHeader
             );
             setApplications(response.data);
         } catch (error) {
@@ -35,8 +38,21 @@ const MyJobApplications = () => {
 
     // TODO: async axios get notes
 
+    async function fetchNotes() {
+        try {
+            const response = await axios.get(
+                `https://localhost:5001/api/notes`,
+                authHeader
+            );
+            setNotes(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         fetchApplications();
+        fetchNotes();
     }, []);
 
     return (

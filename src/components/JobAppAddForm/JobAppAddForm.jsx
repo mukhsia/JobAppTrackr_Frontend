@@ -23,7 +23,6 @@ const JobAppAddForm = ({ application, onApplicationUpdate }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    // TODO axios POST
     const defaultValues = {
         title: 'Software Developer I',
         archived: false,
@@ -73,13 +72,29 @@ const JobAppAddForm = ({ application, onApplicationUpdate }) => {
         }
     }
 
+    const simpleAddForm = () => {
+        return <div></div>;
+    };
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 640,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+
     return (
         <div>
             <Button onClick={handleOpen}>
                 <AddIcon />
             </Button>
             <Modal open={open} onClose={handleClose}>
-                <Box>
+                <Box sx={style}>
                     <Typography
                         id="modal-modal-title"
                         variant="h6"

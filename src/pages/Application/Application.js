@@ -1,45 +1,50 @@
 // General Import
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
 
 // Component Imports
-import JobAppList from '../../components/JobAppList/JobAppList';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import JobAppInfo from '../../components/JobAppInfo/JobAppInfo';
+import InterviewsList from '../../components/InterviewsList/InterviewsList';
+import NotesList from '../../components/NotesList/NotesList';
 
 const Application = () => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
-    const [applications, setApplications] = useState([]);
+    const [application, setApplication] = useState({});
     const [searchFilter, setSearchFilter] = useState('');
 
-    async function fetchApplications() {
+    async function fetchApplications(jobAppId) {
         try {
             const response = await axios.get(
-                `https://localhost:5001/api/applications`,
+                `https://localhost:5001/api/applications/${jobAppId}`,
                 {
                     headers: {
                         Authorization: 'Bearer ' + token,
                     },
                 }
             );
-            setApplications(response.data);
+            setApplication(response.data);
         } catch (error) {
             console.log(error);
         }
     }
 
-    // TODO: async axios get notes
-
     useEffect(() => {
         fetchApplications();
     }, []);
 
-    return <div></div>;
+    return (
+        <div>
+            <JobAppInfo />
+            <InterviewsList />
+            <NotesList />
+        </div>
+    );
 };
 
 export default Application;
