@@ -9,38 +9,14 @@ import useAuth from '../../hooks/useAuth';
 //Component Import
 import InterviewItem from '../InterviewItem/InterviewItem';
 
-const InterviewsList = ({ jobAppId }) => {
+const InterviewsList = ({ interviews, onInterviewsUpdate }) => {
     const [user, token] = useAuth();
-    const [interviews, setInterviews] = useState([]);
-
-    async function fetchInterviews(jobAppId) {
-        const authHeader = {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        };
-
-        try {
-            const response = await axios.get(
-                `https://localhost:5001/api/interviews/${jobAppId}`,
-                authHeader
-            );
-            setInterviews(response.data);
-            console.log(interviews);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        fetchInterviews(jobAppId);
-    }, []);
 
     const interviewItems = interviews.map((interview) => (
         <InterviewItem
             interview={interview}
             key={interview.id}
-            onInterviewUpdate={fetchInterviews}
+            onInterviewsUpdate={onInterviewsUpdate}
         />
     ));
 

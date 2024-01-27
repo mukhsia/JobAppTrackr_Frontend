@@ -10,29 +10,28 @@ import useAuth from '../../hooks/useAuth';
 import NoteItem from '../NoteItem/NoteItem';
 import NoteAddForm from '../NoteAddForm/NoteAddForm';
 
-const NotesList = ({ jobAppId }) => {
+const NotesList = ({ notes, onNotesUpdate }) => {
     const [user, token] = useAuth();
-    const [notes, setNotes] = useState([]);
 
-    async function fetchNotes() {
-        const authHeader = {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        };
+    const noteItems = notes.map((note) => (
+        <NoteItem note={note} key={note.id} onNotesUpdate={onNotesUpdate} />
+    ));
 
-        try {
-            const response = await axios.get(
-                `https://localhost:5001/api/notes/${jobAppId}`,
-                authHeader
-            );
-            setNotes(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    return <div></div>;
+    return (
+        <div>
+            <h3>Notes</h3>
+            <table className="table">
+                <thead className="thead-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Timestamp</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>{noteItems}</tbody>
+            </table>
+        </div>
+    );
 };
 
 export default NotesList;

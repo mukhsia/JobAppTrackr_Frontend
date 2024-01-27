@@ -15,7 +15,11 @@ import NotesList from '../../components/NotesList/NotesList';
 const Application = () => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
+
     const [application, setApplication] = useState({});
+    const [interviews, setInterviews] = useState([]);
+    const [notes, setNotes] = useState([]);
+
     const { jobAppId } = useParams();
 
     async function fetchApplicationById(jobAppId) {
@@ -34,8 +38,46 @@ const Application = () => {
         }
     }
 
+    async function fetchInterviews(jobAppId) {
+        const authHeader = {
+            headers: {
+                Authorization: 'Bearer ' + token,
+            },
+        };
+
+        try {
+            const response = await axios.get(
+                `https://localhost:5001/api/interviews/${jobAppId}`,
+                authHeader
+            );
+            setInterviews(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function fetchNotes(jobAppId) {
+        const authHeader = {
+            headers: {
+                Authorization: 'Bearer ' + token,
+            },
+        };
+
+        try {
+            const response = await axios.get(
+                `https://localhost:5001/api/notes/${jobAppId}`,
+                authHeader
+            );
+            setNotes(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         fetchApplicationById(jobAppId);
+        fetchInterviews(jobAppId);
+        fetchNotes(jobAppId);
     }, []);
 
     return (
@@ -44,8 +86,11 @@ const Application = () => {
                 application={application}
                 onApplicationUpdate={fetchApplicationById}
             />
-            <InterviewsList jobAppId={jobAppId} />
-            <NotesList jobAppId={jobAppId} />
+            <InterviewsList
+                interviews={interviews}
+                onInterviewsUpdate={fetchInterviews}
+            />
+            <NotesList notes={notes} onNotesUpdate={fetchNotes} />
         </div>
     );
 };

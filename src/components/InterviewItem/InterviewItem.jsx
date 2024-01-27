@@ -5,7 +5,7 @@ import axios from 'axios';
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
 
-const InterviewItem = ({ interview, onInterviewUpdate }) => {
+const InterviewItem = ({ interview, onInterviewsUpdate }) => {
     const [user, token] = useAuth();
 
     const authHeader = {
