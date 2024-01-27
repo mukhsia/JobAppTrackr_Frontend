@@ -42,7 +42,7 @@ function App() {
                 />
 
                 <Route
-                    path="/applications"
+                    path="/applications/:jobAppId/"
                     element={
                         <PrivateRoute>
                             <Application />

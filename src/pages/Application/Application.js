@@ -16,9 +16,9 @@ const Application = () => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
     const [application, setApplication] = useState({});
-    const [searchFilter, setSearchFilter] = useState('');
+    const { jobAppId } = useParams();
 
-    async function fetchApplications(jobAppId) {
+    async function fetchApplicationById(jobAppId) {
         try {
             const response = await axios.get(
                 `https://localhost:5001/api/applications/${jobAppId}`,
@@ -35,14 +35,17 @@ const Application = () => {
     }
 
     useEffect(() => {
-        fetchApplications();
+        fetchApplicationById(jobAppId);
     }, []);
 
     return (
         <div>
-            <JobAppInfo />
-            <InterviewsList />
-            <NotesList />
+            <JobAppInfo
+                application={application}
+                onApplicationUpdate={fetchApplicationById}
+            />
+            <InterviewsList jobAppId={jobAppId} />
+            <NotesList jobAppId={jobAppId} />
         </div>
     );
 };

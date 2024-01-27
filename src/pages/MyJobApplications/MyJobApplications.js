@@ -36,8 +36,6 @@ const MyJobApplications = () => {
         }
     }
 
-    // TODO: async axios get notes
-
     async function fetchNotes() {
         try {
             const response = await axios.get(

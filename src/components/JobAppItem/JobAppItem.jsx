@@ -58,7 +58,6 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                         Job Offer Accepted
                     </option>
                 </select>
-                {application.status}
             </td>
             <td>{application.company}</td>
             <td>{application.releaseDate}</td>
