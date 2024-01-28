@@ -44,7 +44,25 @@ const InterviewEditForm = ({ interview, onInterviewsUpdate }) => {
                 formData,
                 authHeader
             );
-            onInterviewsUpdate(interview.jobId);
+            postNewNote(response.data.jobId);
+            onInterviewsUpdate(response.data.jobId);
+        } catch (error) {
+            console.warn('Error trying to post review: ', error);
+        }
+    }
+
+    async function postNewNote(applicationId) {
+        try {
+            let response = await axios.post(
+                'https://localhost:5001/api/notes',
+                {
+                    title: 'Interview Edited',
+                    timestamp: new Date().toISOString(),
+                    text: 'Interview Edited',
+                    jobid: applicationId,
+                },
+                authHeader
+            );
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }

@@ -132,7 +132,7 @@ const JobAppAddForm = ({ application, onApplicationUpdate }) => {
                                 </option>
                                 <option value="Rejected">Rejected</option>
                                 <option value="Job Offer Received">
-                                    Offer Received
+                                    Job Offer Received
                                 </option>
                                 <option value="Job Offer Accepted">
                                     Job Offer Accepted

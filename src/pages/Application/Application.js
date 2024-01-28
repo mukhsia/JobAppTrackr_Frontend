@@ -33,8 +33,8 @@ const Application = () => {
                 }
             );
             setApplication(response.data);
-            setInterviews(response.data.interviews);
-            setNotes(response.data.notes);
+            setInterviews(response.data.interviews.reverse());
+            setNotes(response.data.notes.reverse());
         } catch (error) {
             console.log(error);
         }

@@ -5,6 +5,7 @@ import axios from 'axios';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
+import JobAppEditForm from '../JobAppEditForm/JobAppEditForm';
 
 const JobAppItem = ({ application, onApplicationUpdate }) => {
     const [status, setStatus] = useState(application.status);
@@ -66,6 +67,12 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
             </td>
             <td>{application.company}</td>
             <td>{application.releaseDate}</td>
+            <td>
+                <JobAppEditForm
+                    application={application}
+                    onApplicationUpdate={onApplicationUpdate}
+                />
+            </td>
         </tr>
     );
 };

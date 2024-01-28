@@ -8,7 +8,14 @@ const JobAppInfo = ({ application, onApplicationUpdate }) => {
 
     return (
         <div>
-            <h3>Info</h3>
+            <div>
+                <h3>Info</h3>
+                <JobAppEditForm
+                    application={application}
+                    onApplicationUpdate={onApplicationUpdate}
+                />
+            </div>
+
             <div>
                 <p>Title: {application.title}</p>
                 <p>Company: {application.company}</p>
