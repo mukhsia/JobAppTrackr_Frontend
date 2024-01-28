@@ -8,8 +8,9 @@ import useAuth from '../../hooks/useAuth';
 
 //Component Import
 import InterviewItem from '../InterviewItem/InterviewItem';
+import InterviewAddForm from '../InterviewAddForm/InterviewAddForm';
 
-const InterviewsList = ({ interviews, onInterviewsUpdate }) => {
+const InterviewsList = ({ interviews, applicationId, onInterviewsUpdate }) => {
     const [user, token] = useAuth();
 
     const interviewItems = interviews.map((interview) => (
@@ -31,6 +32,12 @@ const InterviewsList = ({ interviews, onInterviewsUpdate }) => {
                         <th>End</th>
                         <th>Interviewer</th>
                         <th>Details</th>
+                        <th>
+                            <InterviewAddForm
+                                applicationId={applicationId}
+                                onInterviewsUpdate={onInterviewsUpdate}
+                            />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>{interviewItems}</tbody>

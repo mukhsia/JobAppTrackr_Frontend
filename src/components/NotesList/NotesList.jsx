@@ -10,7 +10,7 @@ import useAuth from '../../hooks/useAuth';
 import NoteItem from '../NoteItem/NoteItem';
 import NoteAddForm from '../NoteAddForm/NoteAddForm';
 
-const NotesList = ({ notes, onNotesUpdate }) => {
+const NotesList = ({ notes, applicationId, onNotesUpdate }) => {
     const [user, token] = useAuth();
 
     const noteItems = notes.map((note) => (
@@ -26,6 +26,12 @@ const NotesList = ({ notes, onNotesUpdate }) => {
                         <th>Title</th>
                         <th>Timestamp</th>
                         <th>Details</th>
+                        <th>
+                            <NoteAddForm
+                                applicationId={applicationId}
+                                onNotesUpdate={onNotesUpdate}
+                            />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>{noteItems}</tbody>

@@ -52,9 +52,14 @@ const Application = () => {
             />
             <InterviewsList
                 interviews={interviews}
+                applicationId={jobAppId}
                 onInterviewsUpdate={fetchApplicationById}
             />
-            <NotesList notes={notes} onNotesUpdate={fetchApplicationById} />
+            <NotesList
+                notes={notes}
+                applicationId={jobAppId}
+                onNotesUpdate={fetchApplicationById}
+            />
         </div>
     );
 };

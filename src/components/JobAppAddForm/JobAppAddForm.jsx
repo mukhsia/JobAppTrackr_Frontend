@@ -35,8 +35,6 @@ const JobAppAddForm = ({ application, onApplicationUpdate }) => {
         defaultValuesApplication
     );
 
-    const [selectedOption, setSelectedOption] = useState(formData.status);
-
     async function postNewApplication() {
         try {
             let response = await axios.post(
