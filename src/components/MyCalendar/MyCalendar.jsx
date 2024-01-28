@@ -6,10 +6,11 @@ import './MyCalendar.css';
 // Full Calendar imports
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import { useNavigate } from 'react-router-dom';
 
 const MyCalendar = ({ applications }) => {
     const [events, setEvents] = useState([]);
-
+    const navigate = useNavigate();
     function handleEventsChange(applications) {
         const events = applications.map(
             (a) =>
@@ -19,11 +20,18 @@ const MyCalendar = ({ applications }) => {
                         title: a.title,
                         start: i.startDate,
                         end: i.endDate,
+                        url: `../applications/${a.id}`,
                     };
                     return event;
                 })
         );
         setEvents(events.flat());
+    }
+
+    function handleEventClick(info) {
+        info.jsEvent.preventDefault();
+
+        navigate(info.event.url);
     }
 
     useEffect(() => {
@@ -37,6 +45,7 @@ const MyCalendar = ({ applications }) => {
                 initialView="dayGridMonth"
                 height={700}
                 events={events}
+                eventClick={handleEventClick}
             />
         </div>
     );

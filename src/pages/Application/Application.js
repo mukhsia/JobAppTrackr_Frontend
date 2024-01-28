@@ -46,7 +46,6 @@ const Application = () => {
 
     return (
         <div>
-            <Link to={`/MyJobApplications`}>Back</Link>
             <JobAppInfo
                 application={application}
                 onApplicationUpdate={fetchApplicationById}
