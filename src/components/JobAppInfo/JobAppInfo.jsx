@@ -1,8 +1,7 @@
 // General Imports
 
 // Component Imports
-import InterviewsList from '../InterviewsList/InterviewsList';
-import NotesList from '../NotesList/NotesList';
+import JobAppEditForm from '../JobAppEditForm/JobAppEditForm';
 
 const JobAppInfo = ({ application, onApplicationUpdate }) => {
     const archived = application.archived ? 'Yes' : 'No';

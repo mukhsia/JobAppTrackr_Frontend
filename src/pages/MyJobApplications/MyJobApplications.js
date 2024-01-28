@@ -36,21 +36,8 @@ const MyJobApplications = () => {
         }
     }
 
-    async function fetchNotes() {
-        try {
-            const response = await axios.get(
-                `https://localhost:5001/api/notes`,
-                authHeader
-            );
-            setNotes(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(() => {
         fetchApplications();
-        fetchNotes();
     }, []);
 
     return (

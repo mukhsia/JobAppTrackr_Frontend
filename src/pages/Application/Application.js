@@ -33,42 +33,8 @@ const Application = () => {
                 }
             );
             setApplication(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async function fetchInterviews(jobAppId) {
-        const authHeader = {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        };
-
-        try {
-            const response = await axios.get(
-                `https://localhost:5001/api/interviews/${jobAppId}`,
-                authHeader
-            );
-            setInterviews(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async function fetchNotes(jobAppId) {
-        const authHeader = {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        };
-
-        try {
-            const response = await axios.get(
-                `https://localhost:5001/api/notes/${jobAppId}`,
-                authHeader
-            );
-            setNotes(response.data);
+            setInterviews(response.data.interviews);
+            setNotes(response.data.notes);
         } catch (error) {
             console.log(error);
         }
@@ -76,8 +42,6 @@ const Application = () => {
 
     useEffect(() => {
         fetchApplicationById(jobAppId);
-        fetchInterviews(jobAppId);
-        fetchNotes(jobAppId);
     }, []);
 
     return (
@@ -89,9 +53,9 @@ const Application = () => {
             />
             <InterviewsList
                 interviews={interviews}
-                onInterviewsUpdate={fetchInterviews}
+                onInterviewsUpdate={fetchApplicationById}
             />
-            <NotesList notes={notes} onNotesUpdate={fetchNotes} />
+            <NotesList notes={notes} onNotesUpdate={fetchApplicationById} />
         </div>
     );
 };

@@ -16,6 +16,8 @@ const MyDashboard = ({ fetchApplications }) => {
     const navigate = useNavigate();
 
     const [applications, setApplications] = useState([]);
+    const [interviews, setInterviews] = useState([]);
+    const [notes, setNotes] = useState([]);
 
     async function fetchApplications() {
         try {
@@ -27,7 +29,12 @@ const MyDashboard = ({ fetchApplications }) => {
                     },
                 }
             );
-            setApplications(response.data);
+            let applications = response.data.filter(
+                (application) => application.archived === false
+            );
+            setApplications(applications);
+            setNotes(applications.notes);
+            setInterviews(applications.interviews);
         } catch (error) {
             console.log(error);
         }
@@ -39,10 +46,10 @@ const MyDashboard = ({ fetchApplications }) => {
 
     return (
         <div>
-            <MyCalendar />
+            <MyCalendar applications={applications} />
             <div>
-                <TopFiveTable />
-                <TopFiveTable />
+                <TopFiveTable applications={applications} />
+                <TopFiveTable applications={applications} />
             </div>
         </div>
     );
