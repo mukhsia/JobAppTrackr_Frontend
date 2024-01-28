@@ -3,14 +3,11 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// Material UI imports
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import AddIcon from '@mui/icons-material/Add';
-import TextField from '@mui/material/TextField';
-import { FormControl, FormLabel } from '@mui/material';
+// react-bootstrap Imports
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Plus } from 'react-bootstrap-icons';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // Hook Imports
 import useCustomForm from '../../hooks/useCustomForm';
@@ -19,45 +16,26 @@ import useAuth from '../../hooks/useAuth';
 const JobAppAddForm = ({ application, onApplicationUpdate }) => {
     const [user, token] = useAuth();
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const defaultValues = {
-        title: 'Software Developer I',
-        archived: false,
-        status: 'Applied',
-        company: 'The Company',
-    };
-
     const authHeader = {
         headers: {
             Authorization: 'Bearer ' + token,
         },
     };
 
-    const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
+    // Custom Form Related
+    const defaultValuesApplication = {
+        title: '',
+        archived: false,
+        status: 'Applied',
+        company: '',
+    };
+
+    const [formData, handleInputChange, handleSubmit] = useCustomForm(
         postNewApplication,
-        defaultValues
+        defaultValuesApplication
     );
 
-    async function postNewNote(jobId) {
-        try {
-            let response = await axios.post(
-                'https://localhost:5001/api/notes',
-                {
-                    jobid: jobId,
-                    title: 'Job Application Added',
-                    timestamp: Date.now().toISOString(),
-                    text: 'Job Application Added',
-                },
-                authHeader
-            );
-            onApplicationUpdate();
-        } catch (error) {
-            console.warn('Error trying to post note: ', error);
-        }
-    }
+    const [selectedOption, setSelectedOption] = useState(formData.status);
 
     async function postNewApplication() {
         try {
@@ -67,46 +45,115 @@ const JobAppAddForm = ({ application, onApplicationUpdate }) => {
                 authHeader
             );
             postNewNote(response.data.id);
+            onApplicationUpdate();
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }
     }
 
-    const simpleAddForm = () => {
-        return <div></div>;
-    };
+    async function postNewNote(applicationId) {
+        try {
+            let response = await axios.post(
+                'https://localhost:5001/api/notes',
+                {
+                    title: 'Application Created',
+                    timestamp: new Date().toISOString(),
+                    text: 'Application Created',
+                    jobid: applicationId,
+                },
+                authHeader
+            );
+        } catch (error) {
+            console.warn('Error trying to post review: ', error);
+        }
+    }
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 640,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
+    // Modal Related
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleSubmitAndClose = (e) => {
+        handleSubmit(e);
+        setShow(false);
     };
-
     return (
         <div>
-            <Button onClick={handleOpen}>
-                <AddIcon />
+            <Button variant="primary" onClick={handleShow}>
+                <Plus />
             </Button>
-            <Modal open={open} onClose={handleClose}>
-                <Box sx={style}>
-                    <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
+
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add an Application</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form className="form">
+                        <label>
+                            Title
+                            <input
+                                id="title"
+                                name="title"
+                                type="text"
+                                value={formData.title}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Company:
+                            <input
+                                id="company"
+                                name="company"
+                                type="text"
+                                value={formData.company}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Status:
+                            <select
+                                id="status"
+                                name="status"
+                                value={formData.status}
+                                onChange={handleInputChange}
+                            >
+                                <option value="Applied">Applied</option>
+                                <option value="Application Responded">
+                                    Application Responded
+                                </option>
+                                <option value="Phone Interview">
+                                    Phone Interview
+                                </option>
+                                <option value="Screening Interview">
+                                    Screening Interview
+                                </option>
+                                <option value="Technical Interview">
+                                    Technical Interview
+                                </option>
+                                <option value="Final Interview">
+                                    Final Interview
+                                </option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Job Offer Received">
+                                    Offer Received
+                                </option>
+                                <option value="Job Offer Accepted">
+                                    Job Offer Accepted
+                                </option>
+                            </select>
+                        </label>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button
+                        variant="primary"
+                        onClick={(e) => handleSubmitAndClose(e)}
                     >
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor
-                        ligula.
-                    </Typography>
-                </Box>
+                        Submit
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </div>
     );

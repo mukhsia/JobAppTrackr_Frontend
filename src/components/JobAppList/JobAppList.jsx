@@ -35,8 +35,6 @@ const JobAppList = ({
         />
     ));
 
-    // TODO: POST axios request to add an application
-
     return (
         <div>
             <table className="table">
@@ -47,7 +45,9 @@ const JobAppList = ({
                         <th>Company</th>
                         <th>Last Updated</th>
                         <th>
-                            <JobAppAddForm />
+                            <JobAppAddForm
+                                onApplicationUpdate={onApplicationUpdate}
+                            />
                         </th>
                     </tr>
                 </thead>

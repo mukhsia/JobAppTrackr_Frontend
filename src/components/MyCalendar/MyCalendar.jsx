@@ -5,7 +5,7 @@ import './MyCalendar.css';
 
 // Full Calendar imports
 import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import dayGridPlugin from '@fullcalendar/daygrid';
 import { useNavigate } from 'react-router-dom';
 
 const MyCalendar = ({ applications }) => {

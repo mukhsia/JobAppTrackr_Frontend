@@ -16,8 +16,8 @@ const MyDashboard = ({ fetchApplications }) => {
     const navigate = useNavigate();
 
     const [applications, setApplications] = useState([]);
-    const [interviews, setInterviews] = useState([]);
-    const [notes, setNotes] = useState([]);
+    let topFiveId = [];
+    let bottomFiveId = [];
 
     async function fetchApplications() {
         try {
@@ -33,8 +33,10 @@ const MyDashboard = ({ fetchApplications }) => {
                 (application) => application.archived === false
             );
             setApplications(applications);
-            setNotes(applications.notes);
-            setInterviews(applications.interviews);
+
+            // Sort notes of each application, get the most recents, flatten, get the top 5 and bottom 5 application ids
+            // let notes = applications.map((a) => a.notes).flat();
+            // console.log(notes);
         } catch (error) {
             console.log(error);
         }
