@@ -24,9 +24,9 @@ const NoteAddForm = ({ applicationId, onNotesUpdate }) => {
 
     // Custom Form Related
     const defaultValues = {
-        title: 'Application Created',
+        title: '',
         timestamp: new Date().toISOString(),
-        text: 'Application Created',
+        text: '',
         jobid: applicationId,
     };
 
@@ -37,11 +37,6 @@ const NoteAddForm = ({ applicationId, onNotesUpdate }) => {
 
     async function postNewNote(applicationId) {
         try {
-            console.log(formData.title);
-            console.log(formData.timestamp);
-            console.log(formData.text);
-            console.log(formData.jobid);
-
             let response = await axios.post(
                 'https://localhost:5001/api/notes',
                 formData,
