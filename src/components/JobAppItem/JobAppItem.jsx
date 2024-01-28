@@ -1,5 +1,6 @@
 // General import
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // Hook Imports
@@ -32,7 +33,11 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
 
     return (
         <tr>
-            <td>{application.title}</td>
+            <td>
+                <Link to={`/applications/${application.id}`}>
+                    {application.title}
+                </Link>
+            </td>
             <td>
                 <select
                     value={status}

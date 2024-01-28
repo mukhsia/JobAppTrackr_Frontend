@@ -1,7 +1,7 @@
 // General Import
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 // Hook Imports
@@ -82,6 +82,7 @@ const Application = () => {
 
     return (
         <div>
+            <Link to={`/MyJobApplications`}>Back</Link>
             <JobAppInfo
                 application={application}
                 onApplicationUpdate={fetchApplicationById}
