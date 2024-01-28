@@ -8,14 +8,13 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 
 // Component Imports
-import JobAppList from '../../components/JobAppList/JobAppList';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import MyCalendar from '../../components/MyCalendar/MyCalendar';
+import TopFiveTable from '../../components/TopFiveTable/TopFiveTable';
 
 const MyDashboard = ({ fetchApplications }) => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
 
-    const [searchFilter, setSearchFilter] = useState('');
     const [applications, setApplications] = useState([]);
 
     async function fetchApplications() {
@@ -38,7 +37,15 @@ const MyDashboard = ({ fetchApplications }) => {
         fetchApplications();
     }, []);
 
-    return <div></div>;
+    return (
+        <div>
+            <MyCalendar />
+            <div>
+                <TopFiveTable />
+                <TopFiveTable />
+            </div>
+        </div>
+    );
 };
 
 export default MyDashboard;

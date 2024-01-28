@@ -16,7 +16,6 @@ import Footer from './components/Footer/Footer';
 
 // Util Imports
 import PrivateRoute from './utils/PrivateRoute';
-import { Dashboard } from '@mui/icons-material';
 
 function App() {
     return (
@@ -50,7 +49,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/dashboard"
+                    path="/MyDashboard"
                     element={
                         <PrivateRoute>
                             <MyDashboard />
