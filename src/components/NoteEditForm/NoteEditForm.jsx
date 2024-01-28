@@ -38,7 +38,7 @@ const NoteEditForm = ({ note, onNotesUpdate }) => {
     async function putEditNote() {
         try {
             let response = await axios.put(
-                'https://localhost:5001/api/notes',
+                `https://localhost:5001/api/notes/${note.id}`,
                 formData,
                 authHeader
             );

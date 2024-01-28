@@ -5,11 +5,15 @@ import axios from 'axios';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
+
+//Component Imports
 import JobAppEditForm from '../JobAppEditForm/JobAppEditForm';
+import JobAppArchive from '../JobAppArchive/JobAppArchive';
 
 const JobAppItem = ({ application, onApplicationUpdate }) => {
     const [status, setStatus] = useState(application.status);
     const [user, token] = useAuth();
+    const archived = application.archived ? 'Yes' : 'No';
 
     const authHeader = {
         headers: {
@@ -66,9 +70,13 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                 </select>
             </td>
             <td>{application.company}</td>
-            <td>{application.releaseDate}</td>
+            <td>{archived}</td>
             <td>
                 <JobAppEditForm
+                    application={application}
+                    onApplicationUpdate={onApplicationUpdate}
+                />
+                <JobAppArchive
                     application={application}
                     onApplicationUpdate={onApplicationUpdate}
                 />

@@ -38,7 +38,7 @@ const JobAppEditForm = ({ application, onApplicationUpdate }) => {
     async function PutEditApplication() {
         try {
             let response = await axios.put(
-                `https://localhost:5001/api/applications${application.id}`,
+                `https://localhost:5001/api/applications/${application.id}`,
                 formData,
                 authHeader
             );

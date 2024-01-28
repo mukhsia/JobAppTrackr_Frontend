@@ -1,4 +1,5 @@
 // General Imports
+import React from 'react';
 
 // Component Imports
 import JobAppEditForm from '../JobAppEditForm/JobAppEditForm';
@@ -10,10 +11,6 @@ const JobAppInfo = ({ application, onApplicationUpdate }) => {
         <div>
             <div>
                 <h3>Info</h3>
-                <JobAppEditForm
-                    application={application}
-                    onApplicationUpdate={onApplicationUpdate}
-                />
             </div>
 
             <div>

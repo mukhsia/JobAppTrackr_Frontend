@@ -43,7 +43,7 @@ const JobAppList = ({
                         <th>Title</th>
                         <th>Status</th>
                         <th>Company</th>
-                        <th>Last Updated</th>
+                        <th>Archived</th>
                         <th>
                             <JobAppAddForm
                                 onApplicationUpdate={onApplicationUpdate}

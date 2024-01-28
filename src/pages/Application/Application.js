@@ -22,7 +22,7 @@ const Application = () => {
 
     const { jobAppId } = useParams();
 
-    async function fetchApplicationById(jobAppId) {
+    async function fetchApplicationById() {
         try {
             const response = await axios.get(
                 `https://localhost:5001/api/applications/${jobAppId}`,
