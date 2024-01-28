@@ -9,15 +9,30 @@ import useAuth from '../../hooks/useAuth';
 
 // Component Imports
 import MyCalendar from '../../components/MyCalendar/MyCalendar';
-import TopFiveTable from '../../components/TopFiveTable/TopFiveTable';
+import TopFiveList from '../../components/TopFiveList/TopFiveList';
 
-const MyDashboard = ({ fetchApplications }) => {
+const MyDashboard = () => {
     const [user, token] = useAuth();
     const navigate = useNavigate();
 
     const [applications, setApplications] = useState([]);
-    let topFiveId = [];
-    let bottomFiveId = [];
+    const [topFive, setTopFive] = useState([]);
+    const [bottomFive, setBottomFive] = useState([]);
+
+    const handleTopFive = (applications) => {
+        const sortedApplications = [...applications].sort(
+            sortApplicationByTime
+        );
+        setTopFive(sortedApplications.slice(0, 5));
+        setBottomFive(sortedApplications.slice(-5));
+    };
+
+    function sortApplicationByTime(a, b) {
+        // Newest note is at the bottom pre-reverse
+        const aTime = new Date(a.notes.reverse()[0].timeStamp);
+        const bTime = new Date(b.notes.reverse()[0].timeStamp);
+        return bTime - aTime;
+    }
 
     async function fetchApplications() {
         try {
@@ -33,10 +48,7 @@ const MyDashboard = ({ fetchApplications }) => {
                 (application) => application.archived === false
             );
             setApplications(applications);
-
-            // Sort notes of each application, get the most recents, flatten, get the top 5 and bottom 5 application ids
-            // let notes = applications.map((a) => a.notes).flat();
-            // console.log(notes);
+            handleTopFive(applications);
         } catch (error) {
             console.log(error);
         }
@@ -50,8 +62,17 @@ const MyDashboard = ({ fetchApplications }) => {
         <div>
             <MyCalendar applications={applications} />
             <div>
-                <TopFiveTable applications={applications} />
-                <TopFiveTable applications={applications} />
+                <div>
+                    <h5>Most Recent Application</h5>
+                    <TopFiveList topFive={topFive} handleTopFive={setTopFive} />
+                </div>
+                <div>
+                    <h5>Least Recent Application</h5>
+                    <TopFiveList
+                        topFive={bottomFive}
+                        handleTopFive={setTopFive}
+                    />
+                </div>
             </div>
         </div>
     );

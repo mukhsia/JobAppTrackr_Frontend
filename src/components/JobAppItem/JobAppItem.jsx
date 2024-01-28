@@ -40,6 +40,11 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
         <tr>
             <td>
                 <Link to={`/applications/${application.id}`}>
+                    {application.id}
+                </Link>
+            </td>
+            <td>
+                <Link to={`/applications/${application.id}`}>
                     {application.title}
                 </Link>
             </td>

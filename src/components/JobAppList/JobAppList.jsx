@@ -40,6 +40,7 @@ const JobAppList = ({
             <table className="table">
                 <thead className="thead-light">
                     <tr>
+                        <th>Id</th>
                         <th>Title</th>
                         <th>Status</th>
                         <th>Company</th>
