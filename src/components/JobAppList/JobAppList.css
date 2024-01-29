@@ -4,3 +4,11 @@
     border-style: solid;
     background-color: white;
 }
+
+.app-list th {
+    vertical-align: middle;
+}
+
+.app-list td {
+    vertical-align: middle;
+}

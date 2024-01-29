@@ -34,3 +34,7 @@ p {
     padding: 3px 7px;
     font-size: 17px;
 }
+
+.table thead tr th {
+    background-color: rgb(189, 189, 189);
+}

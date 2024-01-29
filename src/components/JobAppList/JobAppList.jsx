@@ -41,7 +41,7 @@ const JobAppList = ({
 
     return (
         <div className="app-list">
-            <Table className="table">
+            <Table bordered hover>
                 <thead className="thead-light">
                     <tr>
                         <th>Id</th>
