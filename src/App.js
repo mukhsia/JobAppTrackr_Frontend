@@ -20,7 +20,7 @@ import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
     return (
-        <div>
+        <div className="app-page">
             <Navbar />
             <Routes>
                 <Route

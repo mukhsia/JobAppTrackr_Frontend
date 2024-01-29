@@ -9,6 +9,7 @@ import useAuth from '../../hooks/useAuth';
 //Component Import
 import InterviewItem from '../InterviewItem/InterviewItem';
 import InterviewAddForm from '../InterviewAddForm/InterviewAddForm';
+import { Table } from 'react-bootstrap';
 
 const InterviewsList = ({ interviews, applicationId, onInterviewsUpdate }) => {
     const [user, token] = useAuth();
@@ -22,9 +23,9 @@ const InterviewsList = ({ interviews, applicationId, onInterviewsUpdate }) => {
     ));
 
     return (
-        <div>
+        <div className="app-list">
             <h3>Interviews</h3>
-            <table className="table">
+            <Table bordered hover>
                 <thead className="thead-light">
                     <tr>
                         <th>Type</th>
@@ -41,7 +42,7 @@ const InterviewsList = ({ interviews, applicationId, onInterviewsUpdate }) => {
                     </tr>
                 </thead>
                 <tbody>{interviewItems}</tbody>
-            </table>
+            </Table>
         </div>
     );
 };

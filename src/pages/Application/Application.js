@@ -47,20 +47,22 @@ const Application = () => {
     return (
         <div className="page-body">
             <div className="container">
-                <JobAppInfo
-                    application={application}
-                    onApplicationUpdate={fetchApplicationById}
-                />
-                <InterviewsList
-                    interviews={interviews}
-                    applicationId={jobAppId}
-                    onInterviewsUpdate={fetchApplicationById}
-                />
-                <NotesList
-                    notes={notes}
-                    applicationId={jobAppId}
-                    onNotesUpdate={fetchApplicationById}
-                />
+                <div className="mx-5">
+                    <JobAppInfo
+                        application={application}
+                        onApplicationUpdate={fetchApplicationById}
+                    />
+                    <InterviewsList
+                        interviews={interviews}
+                        applicationId={jobAppId}
+                        onInterviewsUpdate={fetchApplicationById}
+                    />
+                    <NotesList
+                        notes={notes}
+                        applicationId={jobAppId}
+                        onNotesUpdate={fetchApplicationById}
+                    />
+                </div>
             </div>
         </div>
     );

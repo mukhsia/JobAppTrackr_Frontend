@@ -9,6 +9,7 @@ import useAuth from '../../hooks/useAuth';
 // Component Imports
 import NoteItem from '../NoteItem/NoteItem';
 import NoteAddForm from '../NoteAddForm/NoteAddForm';
+import { Table } from 'react-bootstrap';
 
 const NotesList = ({ notes, applicationId, onNotesUpdate }) => {
     const [user, token] = useAuth();
@@ -18,9 +19,9 @@ const NotesList = ({ notes, applicationId, onNotesUpdate }) => {
     ));
 
     return (
-        <div>
+        <div className="app-list mt-5">
             <h3>Notes</h3>
-            <table className="table">
+            <Table bordered hover>
                 <thead className="thead-light">
                     <tr>
                         <th>Title</th>
@@ -35,7 +36,7 @@ const NotesList = ({ notes, applicationId, onNotesUpdate }) => {
                     </tr>
                 </thead>
                 <tbody>{noteItems}</tbody>
-            </table>
+            </Table>
         </div>
     );
 };

@@ -15,7 +15,13 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
     const [status, setStatus] = useState(application.status);
     const [statusClass, setStatusClass] = useState('applied');
     const [user, token] = useAuth();
-    const archived = application.archived ? 'Yes' : 'No';
+    const archived = application.archived ? (
+        <td>
+            <b>Yes</b>
+        </td>
+    ) : (
+        <td>No</td>
+    );
 
     const authHeader = {
         headers: {
@@ -32,45 +38,63 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                 },
                 authHeader
             );
-            setStatus(status);
-            setStatusClass(handleStatusClass(response.data));
+            handleStatusChange(response.data);
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }
     }
 
     useEffect(() => {
-        setStatusClass(handleStatusClass(application));
+        handleStatusClass(application);
     }, []);
 
-    const handleStatusClass = (application) => {
-        if (application.archived === true) {
-            return 'archived';
+    useEffect(() => {
+        handleStatusClass(application);
+    }, [archived]);
+
+    const handleStatusClass = (respApplication) => {
+        if (respApplication.archived === true) {
+            setStatusClass('archived');
         } else {
-            switch (application.status) {
+            switch (respApplication.status) {
                 case 'Applied':
-                    return 'applied';
+                    setStatusClass('applied');
+                    break;
                 case 'Application Responded':
-                    return 'responded';
+                    setStatusClass('responded');
+                    break;
                 case 'Phone Interview':
-                    return 'interview';
+                    setStatusClass('interview');
+                    break;
                 case 'Screening Interview':
-                    return 'interview';
+                    setStatusClass('interview');
+                    break;
                 case 'Technical Interview':
-                    return 'technical';
+                    setStatusClass('technical');
+                    break;
                 case 'Final Interview':
-                    return 'final';
+                    setStatusClass('final');
+                    break;
                 case 'Rejected':
-                    return 'rejected';
+                    setStatusClass('rejected');
+                    break;
                 case 'Job Offer Received':
-                    return 'offer-received';
+                    setStatusClass('offer-received');
+                    break;
                 case 'Job Offer Accepted':
-                    return 'offer-accepted';
+                    setStatusClass('offer-accepted');
+                    break;
                 default:
-                    return 'applied';
+                    setStatusClass('applied');
+                    break;
             }
         }
     };
+
+    function handleStatusChange(response) {
+        setStatus(response.status);
+        handleStatusClass(response);
+    }
 
     return (
         <tr className={statusClass}>
@@ -113,16 +137,21 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                 </select>
             </td>
             <td>{application.company}</td>
-            <td>{archived}</td>
+            {archived}
             <td>
-                <JobAppEditForm
-                    application={application}
-                    onApplicationUpdate={onApplicationUpdate}
-                />
-                <JobAppArchive
-                    application={application}
-                    onApplicationUpdate={onApplicationUpdate}
-                />
+                <div className="app-btn">
+                    <JobAppEditForm
+                        application={application}
+                        onApplicationUpdate={onApplicationUpdate}
+                        handleStatusChange={handleStatusChange}
+                    />
+                </div>
+                <div className="app-btn">
+                    <JobAppArchive
+                        application={application}
+                        onApplicationUpdate={onApplicationUpdate}
+                    />
+                </div>
             </td>
         </tr>
     );

@@ -13,7 +13,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import useCustomForm from '../../hooks/useCustomForm';
 import useAuth from '../../hooks/useAuth';
 
-const JobAppEditForm = ({ application, onApplicationUpdate }) => {
+const JobAppEditForm = ({
+    application,
+    onApplicationUpdate,
+    handleStatusChange,
+}) => {
     const [user, token] = useAuth();
 
     const authHeader = {
@@ -44,6 +48,7 @@ const JobAppEditForm = ({ application, onApplicationUpdate }) => {
             );
             postNewNote(response.data.id);
             onApplicationUpdate(response.data.id);
+            handleStatusChange(response.data);
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }

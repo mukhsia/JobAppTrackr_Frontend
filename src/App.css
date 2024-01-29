@@ -8,6 +8,11 @@ p {
     background-color: #5438dc;
 }
 
+html {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 .container {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -37,4 +42,19 @@ p {
 
 .table thead tr th {
     background-color: rgb(189, 189, 189);
+}
+
+.app-list {
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #61a0af;
+    background-color: white;
+}
+
+.app-list th {
+    vertical-align: middle;
+}
+
+.app-list td {
+    vertical-align: middle;
 }
