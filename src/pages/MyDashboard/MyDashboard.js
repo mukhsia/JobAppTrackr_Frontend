@@ -59,7 +59,7 @@ const MyDashboard = () => {
     }, []);
 
     return (
-        <div>
+        <body>
             <MyCalendar applications={applications} />
             <div>
                 <div>
@@ -74,7 +74,7 @@ const MyDashboard = () => {
                     />
                 </div>
             </div>
-        </div>
+        </body>
     );
 };
 

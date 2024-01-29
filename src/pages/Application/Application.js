@@ -45,7 +45,7 @@ const Application = () => {
     }, []);
 
     return (
-        <div>
+        <body>
             <JobAppInfo
                 application={application}
                 onApplicationUpdate={fetchApplicationById}
@@ -60,7 +60,7 @@ const Application = () => {
                 applicationId={jobAppId}
                 onNotesUpdate={fetchApplicationById}
             />
-        </div>
+        </body>
     );
 };
 
