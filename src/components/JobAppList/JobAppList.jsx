@@ -9,6 +9,7 @@ import useAuth from '../../hooks/useAuth';
 // Component Imports
 import JobAppItem from '../JobAppItem/JobAppItem';
 import JobAppAddForm from '../JobAppAddForm/JobAppAddForm';
+import { Table } from 'react-bootstrap';
 
 const JobAppList = ({
     applications,
@@ -39,7 +40,7 @@ const JobAppList = ({
 
     return (
         <div>
-            <table className="table">
+            <Table className="table">
                 <thead className="thead-light">
                     <tr>
                         <th>Id</th>
@@ -55,7 +56,7 @@ const JobAppList = ({
                     </tr>
                 </thead>
                 <tbody>{filteredApplications}</tbody>
-            </table>
+            </Table>
         </div>
     );
 };

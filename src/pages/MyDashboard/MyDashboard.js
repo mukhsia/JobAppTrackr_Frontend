@@ -65,11 +65,11 @@ const MyDashboard = () => {
                 <MyCalendar applications={applications} />
                 <div className="d-flex justify-content-around">
                     <div className="topfive-container">
-                        <h5>Most Recent Application</h5>
+                        <h5 className="mb-4">Most Recent Applications</h5>
                         <TopFiveList topFive={topFive} />
                     </div>
                     <div className="topfive-container">
-                        <h5>Least Recent Application</h5>
+                        <h5 className="mb-4">Least Recent Applications</h5>
                         <TopFiveList
                             topFive={bottomFive}
                             handleTopFive={setTopFive}

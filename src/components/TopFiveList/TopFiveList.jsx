@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// React-bootstrap imports
+import Table from 'react-bootstrap/Table';
+
 const TopFiveTable = ({ topFive }) => {
     const list = topFive.map((a, index) => {
         return (
@@ -19,8 +22,8 @@ const TopFiveTable = ({ topFive }) => {
 
     return (
         <div>
-            <table className="table">
-                <thead className="thead-light">
+            <Table bordered hover>
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>Title</th>
@@ -28,7 +31,7 @@ const TopFiveTable = ({ topFive }) => {
                     </tr>
                 </thead>
                 <tbody>{list}</tbody>
-            </table>
+            </Table>
         </div>
     );
 };

@@ -10,6 +10,7 @@ p {
 
 .container {
     padding-top: 5rem;
+    padding-bottom: 5rem;
     margin: 0 auto;
     max-width: 600px;
     overflow: auto;

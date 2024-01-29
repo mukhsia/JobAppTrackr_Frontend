@@ -1,14 +1,17 @@
+import './SearchBar.css';
+
 const SearchField = ({ searchFilter, onChange }) => {
     return (
-        <form>
-            <div>
+        <div>
+            <form>
                 <input
+                    className="searchbar"
                     value={searchFilter}
                     placeholder="Search..."
                     onChange={(e) => onChange(e.target.value)}
                 />
-            </div>
-        </form>
+            </form>
+        </div>
     );
 };
 
