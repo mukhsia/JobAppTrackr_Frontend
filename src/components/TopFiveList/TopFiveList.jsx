@@ -12,7 +12,7 @@ const TopFiveTable = ({ topFive }) => {
                 <td>
                     <Link to={`/applications/${a.id}`}>{a.title}</Link>
                 </td>
-                <td>{a.notes.slice(-1)[0].timeStamp}</td>
+                <td>{a.notes.slice(-1)[0].timeStamp.substring(0, 10)}</td>
             </tr>
         );
     });

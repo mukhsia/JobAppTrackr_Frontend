@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './MyDashboard.css';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
@@ -62,12 +63,12 @@ const MyDashboard = () => {
         <div className="page-body">
             <div className="container">
                 <MyCalendar applications={applications} />
-                <div className="flex">
-                    <div>
+                <div className="d-flex justify-content-around">
+                    <div className="topfive-container">
                         <h5>Most Recent Application</h5>
                         <TopFiveList topFive={topFive} />
                     </div>
-                    <div>
+                    <div className="topfive-container">
                         <h5>Least Recent Application</h5>
                         <TopFiveList
                             topFive={bottomFive}

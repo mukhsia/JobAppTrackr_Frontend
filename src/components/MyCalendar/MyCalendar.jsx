@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const MyCalendar = ({ applications }) => {
     const [events, setEvents] = useState([]);
     const navigate = useNavigate();
+
+    // Calendar events
     function handleEventsChange(applications) {
         const events = applications.map(
             (a) =>
@@ -41,6 +43,7 @@ const MyCalendar = ({ applications }) => {
 
     return (
         <div className="myCalendar">
+            <h5>Interview Schedule</h5>
             <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView="dayGridMonth"
