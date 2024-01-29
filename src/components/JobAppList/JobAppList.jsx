@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './JobAppList.css';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
@@ -39,7 +40,7 @@ const JobAppList = ({
         ));
 
     return (
-        <div>
+        <div className="app-list">
             <Table className="table">
                 <thead className="thead-light">
                     <tr>
