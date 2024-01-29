@@ -1,7 +1,5 @@
 // General Imports
 import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';

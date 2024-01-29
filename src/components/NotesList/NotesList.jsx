@@ -1,7 +1,5 @@
 // General Imports
 import React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
@@ -19,24 +17,26 @@ const NotesList = ({ notes, applicationId, onNotesUpdate }) => {
     ));
 
     return (
-        <div className="app-list mt-5">
-            <h3>Notes</h3>
-            <Table bordered hover>
-                <thead className="thead-light">
-                    <tr>
-                        <th>Title</th>
-                        <th>Timestamp</th>
-                        <th>Details</th>
-                        <th>
-                            <NoteAddForm
-                                applicationId={applicationId}
-                                onNotesUpdate={onNotesUpdate}
-                            />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>{noteItems}</tbody>
-            </Table>
+        <div className="mt-5">
+            <h3 className="textalign-left">Notes</h3>
+            <div className="app-list">
+                <Table bordered hover>
+                    <thead className="thead-light">
+                        <tr>
+                            <th>Title</th>
+                            <th>Timestamp</th>
+                            <th>Details</th>
+                            <th>
+                                <NoteAddForm
+                                    applicationId={applicationId}
+                                    onNotesUpdate={onNotesUpdate}
+                                />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>{noteItems}</tbody>
+                </Table>
+            </div>
         </div>
     );
 };

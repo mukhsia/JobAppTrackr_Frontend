@@ -58,3 +58,7 @@ html {
 .app-list td {
     vertical-align: middle;
 }
+
+.textalign-left {
+    text-align: left;
+}

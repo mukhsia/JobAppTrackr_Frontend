@@ -23,26 +23,28 @@ const InterviewsList = ({ interviews, applicationId, onInterviewsUpdate }) => {
     ));
 
     return (
-        <div className="app-list">
-            <h3>Interviews</h3>
-            <Table bordered hover>
-                <thead className="thead-light">
-                    <tr>
-                        <th>Type</th>
-                        <th>Start</th>
-                        <th>End</th>
-                        <th>Interviewer</th>
-                        <th>Details</th>
-                        <th>
-                            <InterviewAddForm
-                                applicationId={applicationId}
-                                onInterviewsUpdate={onInterviewsUpdate}
-                            />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>{interviewItems}</tbody>
-            </Table>
+        <div>
+            <h3 className="textalign-left">Interviews</h3>
+            <div className="app-list">
+                <Table bordered hover>
+                    <thead className="thead-light">
+                        <tr>
+                            <th>Type</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Interviewer</th>
+                            <th>Details</th>
+                            <th>
+                                <InterviewAddForm
+                                    applicationId={applicationId}
+                                    onInterviewsUpdate={onInterviewsUpdate}
+                                />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>{interviewItems}</tbody>
+                </Table>
+            </div>
         </div>
     );
 };
