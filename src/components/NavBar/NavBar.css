@@ -1,35 +1,58 @@
 ul {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
 }
 
 li {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 .navBar {
-  background: steelblue;
-  box-shadow: 4px 2px 5px gray;
-  color: white;
-  margin-bottom: 2rem;
-  padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #357ded;
+    box-shadow: 4px 2px 5px gray;
+    color: white;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
 }
 
-.navBar button {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 0.4rem 0.5rem;
+.nav-links {
+    padding-left: 5rem;
 }
 
-.navBar button:hover {
-  background: white;
-  color: steelblue;
-  cursor: pointer;
+.nav-links li {
+    padding-left: 4rem;
 }
 
-.brand {
-  cursor: pointer;
-  font-size: 2rem;
+.nav-user button {
+    background: transparent;
+    padding: 0.4rem 0.5rem;
+}
+
+.nav-user button:hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    background-color: gray;
+}
+
+.btn-logout button:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-login {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
 }

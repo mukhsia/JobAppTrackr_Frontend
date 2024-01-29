@@ -58,10 +58,6 @@ const MyDashboard = () => {
         fetchApplications();
     }, []);
 
-    useEffect(() => {
-        fetchApplications();
-    }, [applications]);
-
     return (
         <div>
             <MyCalendar applications={applications} />

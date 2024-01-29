@@ -9,8 +9,8 @@ const Navbar = () => {
     const navigate = useNavigate();
     return (
         <div className="navBar">
-            <ul>
-                <li className="brand">
+            <ul className="nav-links">
+                <li>
                     <Link
                         to="/MyDashboard"
                         style={{ textDecoration: 'none', color: 'white' }}
@@ -18,7 +18,7 @@ const Navbar = () => {
                         <b>Dashboard</b>
                     </Link>
                 </li>
-                <li className="brand">
+                <li>
                     <Link
                         to="/MyJobApplications"
                         style={{ textDecoration: 'none', color: 'white' }}
@@ -26,16 +26,21 @@ const Navbar = () => {
                         <b>My Job Applications</b>
                     </Link>
                 </li>
-                <li>
-                    {user ? (
-                        <button onClick={logoutUser}>Logout</button>
-                    ) : (
-                        <button onClick={() => navigate('/login')}>
-                            Login
-                        </button>
-                    )}
-                </li>
             </ul>
+            <div className="nav-user">
+                {user ? (
+                    <button className="btn-logout" onClick={logoutUser}>
+                        Logout
+                    </button>
+                ) : (
+                    <button
+                        className="btn-login"
+                        onClick={() => navigate('/login')}
+                    >
+                        Login
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
