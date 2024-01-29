@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TopFiveTable = ({ topFive, handleTopFive }) => {
+const TopFiveTable = ({ topFive }) => {
     const list = topFive.map((a, index) => {
         return (
             <tr key={index}>
@@ -12,7 +12,7 @@ const TopFiveTable = ({ topFive, handleTopFive }) => {
                 <td>
                     <Link to={`/applications/${a.id}`}>{a.title}</Link>
                 </td>
-                <td>{a.notes[0].timeStamp.substring(0, 10)}</td>
+                <td>{a.notes.slice(-1)[0].timeStamp}</td>
             </tr>
         );
     });

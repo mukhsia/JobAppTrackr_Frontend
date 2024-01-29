@@ -24,13 +24,13 @@ const MyDashboard = () => {
             sortApplicationByTime
         );
         setTopFive(sortedApplications.slice(0, 5));
-        setBottomFive(sortedApplications.slice(-5));
+        setBottomFive(sortedApplications.slice(-5).reverse());
     };
 
     function sortApplicationByTime(a, b) {
-        // Newest note is at the bottom pre-reverse
-        const aTime = new Date(a.notes.reverse()[0].timeStamp);
-        const bTime = new Date(b.notes.reverse()[0].timeStamp);
+        // Newest note is the last one
+        const aTime = new Date(a.notes.slice(-1)[0].timeStamp);
+        const bTime = new Date(b.notes.slice(-1)[0].timeStamp);
         return bTime - aTime;
     }
 
@@ -58,13 +58,17 @@ const MyDashboard = () => {
         fetchApplications();
     }, []);
 
+    useEffect(() => {
+        fetchApplications();
+    }, [applications]);
+
     return (
         <div>
             <MyCalendar applications={applications} />
             <div>
                 <div>
                     <h5>Most Recent Application</h5>
-                    <TopFiveList topFive={topFive} handleTopFive={setTopFive} />
+                    <TopFiveList topFive={topFive} />
                 </div>
                 <div>
                     <h5>Least Recent Application</h5>

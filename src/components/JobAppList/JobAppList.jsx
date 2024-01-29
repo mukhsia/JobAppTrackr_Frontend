@@ -27,13 +27,15 @@ const JobAppList = ({
                 application.company.includes(searchFilter)
         );
     }
-    filteredApplications = filteredApplications.map((application) => (
-        <JobAppItem
-            application={application}
-            key={application.id}
-            onApplicationUpdate={onApplicationUpdate}
-        />
-    ));
+    filteredApplications = filteredApplications
+        .reverse()
+        .map((application) => (
+            <JobAppItem
+                application={application}
+                key={application.id}
+                onApplicationUpdate={onApplicationUpdate}
+            />
+        ));
 
     return (
         <div>

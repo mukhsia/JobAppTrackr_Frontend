@@ -20,7 +20,7 @@ const MyCalendar = ({ applications }) => {
                         title: a.title,
                         start: i.startDate,
                         end: i.endDate,
-                        url: `../applications/${a.id}`,
+                        url: `./applications/${a.id}`,
                     };
                     return event;
                 })
