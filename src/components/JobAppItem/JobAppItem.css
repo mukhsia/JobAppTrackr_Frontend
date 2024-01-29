@@ -1,0 +1,35 @@
+.archived td {
+    background-color: lightgray;
+}
+
+.applied td {
+    background-color: white;
+}
+
+.responded td {
+    background-color: blanchedalmond;
+}
+
+.interview td {
+    background-color: lightyellow;
+}
+
+.technical td {
+    background-color: lightcyan;
+}
+
+.final td {
+    background-color: lightsteelblue;
+}
+
+.rejected td {
+    background-color: lightsalmon;
+}
+
+.offer-received td {
+    background-color: lightskyblue;
+}
+
+.offer-accepted td {
+    background-color: lightgreen;
+}

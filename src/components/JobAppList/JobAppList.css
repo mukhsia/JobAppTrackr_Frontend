@@ -12,3 +12,23 @@
 .app-list td {
     vertical-align: middle;
 }
+
+.interview {
+    background-color: azure;
+}
+
+.interview-technical {
+    background-color: blanchedalmond;
+}
+
+.applied {
+    background-color: bisque;
+}
+
+.rejected {
+    background-color: lightcoral;
+}
+
+.archived {
+    background-color: lightslategray;
+}

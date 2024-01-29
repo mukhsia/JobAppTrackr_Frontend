@@ -1,7 +1,8 @@
 // General import
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './JobAppItem.css';
 
 // Hook Imports
 import useAuth from '../../hooks/useAuth';
@@ -12,6 +13,7 @@ import JobAppArchive from '../JobAppArchive/JobAppArchive';
 
 const JobAppItem = ({ application, onApplicationUpdate }) => {
     const [status, setStatus] = useState(application.status);
+    const [statusClass, setStatusClass] = useState('applied');
     const [user, token] = useAuth();
     const archived = application.archived ? 'Yes' : 'No';
 
@@ -31,13 +33,52 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                 authHeader
             );
             setStatus(status);
+            setStatusClass(handleStatusClass(response.data));
+            console.log(statusClass);
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }
     }
 
+    useEffect(() => {
+        handleStatusClass(application);
+    }, []);
+
+    useEffect(() => {
+        handleStatusClass(application);
+    }, [statusClass]);
+
+    const handleStatusClass = (application) => {
+        if (application.archived === true) {
+            return 'Archived';
+        } else {
+            switch (application.status) {
+                case 'Applied':
+                    return 'applied';
+                case 'Application Responded':
+                    return 'responded';
+                case 'Phone Interview':
+                    return 'interview';
+                case 'Screening Interview':
+                    return 'interview';
+                case 'Technical Interview':
+                    return 'technical';
+                case 'Final Interview':
+                    return 'final';
+                case 'Rejected':
+                    return 'rejected';
+                case 'Job Offer Received':
+                    return 'offer-received';
+                case 'Job Offer Accepted':
+                    return 'offer-accepted';
+                default:
+                    return 'applied';
+            }
+        }
+    };
+
     return (
-        <tr>
+        <tr className={statusClass}>
             <td>
                 <Link to={`/applications/${application.id}`}>
                     {application.id}
@@ -68,7 +109,9 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                     </option>
                     <option value="Final Interview">Final Interview</option>
                     <option value="Rejected">Rejected</option>
-                    <option value="Job Offer Received">Offer Received</option>
+                    <option value="Job Offer Received">
+                        Job Offer Received
+                    </option>
                     <option value="Job Offer Accepted">
                         Job Offer Accepted
                     </option>
