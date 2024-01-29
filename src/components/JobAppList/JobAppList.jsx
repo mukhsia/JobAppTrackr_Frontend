@@ -21,6 +21,7 @@ const JobAppList = ({
     if (searchFilter) {
         filteredApplications = filteredApplications.filter(
             (application) =>
+                application.id.includes(searchFilter) ||
                 application.title.includes(searchFilter) ||
                 application.status.includes(searchFilter) ||
                 application.company.includes(searchFilter)
