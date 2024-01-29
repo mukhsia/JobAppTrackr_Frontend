@@ -42,7 +42,7 @@ const JobAppList = ({
     return (
         <div className="app-list">
             <Table bordered hover>
-                <thead className="thead-light">
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>Title</th>

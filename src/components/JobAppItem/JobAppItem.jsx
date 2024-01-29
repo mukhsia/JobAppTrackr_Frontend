@@ -34,23 +34,18 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
             );
             setStatus(status);
             setStatusClass(handleStatusClass(response.data));
-            console.log(statusClass);
         } catch (error) {
             console.warn('Error trying to post review: ', error);
         }
     }
 
     useEffect(() => {
-        handleStatusClass(application);
+        setStatusClass(handleStatusClass(application));
     }, []);
-
-    useEffect(() => {
-        handleStatusClass(application);
-    }, [statusClass]);
 
     const handleStatusClass = (application) => {
         if (application.archived === true) {
-            return 'Archived';
+            return 'archived';
         } else {
             switch (application.status) {
                 case 'Applied':
