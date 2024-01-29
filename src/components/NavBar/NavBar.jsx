@@ -7,26 +7,31 @@ import './NavBar.css';
 const Navbar = () => {
     const { logoutUser, user } = useContext(AuthContext);
     const navigate = useNavigate();
+
     return (
         <div className="navBar">
-            <ul className="nav-links">
-                <li>
-                    <Link
-                        to="/MyDashboard"
-                        style={{ textDecoration: 'none', color: 'white' }}
-                    >
-                        <b>Dashboard</b>
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/MyJobApplications"
-                        style={{ textDecoration: 'none', color: 'white' }}
-                    >
-                        <b>My Job Applications</b>
-                    </Link>
-                </li>
-            </ul>
+            {user ? (
+                <ul className="nav-links">
+                    <li>
+                        <Link
+                            to="/MyDashboard"
+                            style={{ textDecoration: 'none', color: 'white' }}
+                        >
+                            <b>Dashboard</b>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/MyJobApplications"
+                            style={{ textDecoration: 'none', color: 'white' }}
+                        >
+                            <b>My Job Applications</b>
+                        </Link>
+                    </li>
+                </ul>
+            ) : (
+                <h1>Job App Tracker</h1>
+            )}
             <div className="nav-user">
                 {user ? (
                     <div>
