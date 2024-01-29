@@ -16,8 +16,9 @@ const MyCalendar = ({ applications }) => {
             (a) =>
                 a.interviews &&
                 a.interviews.map((i) => {
+                    const title = i.type + ' - ' + a.title;
                     const event = {
-                        title: a.title,
+                        title: title,
                         start: i.startDate,
                         end: i.endDate,
                         url: `../applications/${a.id}`,

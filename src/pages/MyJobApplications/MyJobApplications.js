@@ -41,13 +41,18 @@ const MyJobApplications = () => {
     }, []);
 
     return (
-        <div>
-            <SearchBar searchFilter={searchFilter} onChange={setSearchFilter} />
-            <JobAppList
-                applications={applications}
-                onApplicationUpdate={fetchApplications}
-                searchFilter={searchFilter}
-            />
+        <div className="page-body">
+            <div className="container">
+                <SearchBar
+                    searchFilter={searchFilter}
+                    onChange={setSearchFilter}
+                />
+                <JobAppList
+                    applications={applications}
+                    onApplicationUpdate={fetchApplications}
+                    searchFilter={searchFilter}
+                />
+            </div>
         </div>
     );
 };

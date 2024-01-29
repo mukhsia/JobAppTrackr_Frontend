@@ -59,22 +59,24 @@ const MyDashboard = () => {
     }, []);
 
     return (
-        <body>
-            <MyCalendar applications={applications} />
-            <div>
-                <div>
-                    <h5>Most Recent Application</h5>
-                    <TopFiveList topFive={topFive} />
-                </div>
-                <div>
-                    <h5>Least Recent Application</h5>
-                    <TopFiveList
-                        topFive={bottomFive}
-                        handleTopFive={setTopFive}
-                    />
+        <div className="page-body">
+            <div className="container">
+                <MyCalendar applications={applications} />
+                <div className="flex">
+                    <div>
+                        <h5>Most Recent Application</h5>
+                        <TopFiveList topFive={topFive} />
+                    </div>
+                    <div>
+                        <h5>Least Recent Application</h5>
+                        <TopFiveList
+                            topFive={bottomFive}
+                            handleTopFive={setTopFive}
+                        />
+                    </div>
                 </div>
             </div>
-        </body>
+        </div>
     );
 };
 
