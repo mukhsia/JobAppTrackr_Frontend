@@ -25,7 +25,7 @@ const NoteEditForm = ({ note, onNotesUpdate }) => {
     // Custom Form Related
     const defaultValues = {
         title: note.title,
-        timestamp: note.timestamp,
+        timestamp: note.timeStamp,
         text: note.text,
         jobid: note.jobId,
     };

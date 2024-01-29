@@ -38,6 +38,7 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
                 },
                 authHeader
             );
+            onApplicationUpdate(response.data.id);
             handleStatusChange(response.data);
         } catch (error) {
             console.warn('Error trying to post review: ', error);
@@ -91,9 +92,9 @@ const JobAppItem = ({ application, onApplicationUpdate }) => {
         }
     };
 
-    function handleStatusChange(response) {
-        setStatus(response.status);
-        handleStatusClass(response);
+    function handleStatusChange(responseData) {
+        setStatus(responseData.status);
+        handleStatusClass(responseData);
     }
 
     return (
