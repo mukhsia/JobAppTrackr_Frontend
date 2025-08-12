@@ -15,5 +15,6 @@ Uses [FullCalendar](https://github.com/fullcalendar/fullcalendar) for the Calend
 # Stretch Goal/ Potential TODOs
 
 1. Adding Toasts or some notification system to notify the user of success/ failures/ errors.
-2. Add error handling (depends on notification system).
+2. (depends on notification system) Add more error handling, especially for user registration.
 3. Refactor to use Material UI in place of React-Bootstrap.
+4. Remove irrelevant legacy files/ code related to _Car Make Model_.
