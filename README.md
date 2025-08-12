@@ -12,6 +12,11 @@ Uses [FullCalendar](https://github.com/fullcalendar/fullcalendar) for the Calend
 1. Run `npm install`
 2. Run `npm start`
 
+## Hidden requirements
+
+1. User Password requirement: requires a digit & minimum length is 8
+2. User Email requirement: Needs to be unique.
+
 # Stretch Goal/ Potential TODOs
 
 1. Adding Toasts or some notification system to notify the user of success/ failures/ errors.
