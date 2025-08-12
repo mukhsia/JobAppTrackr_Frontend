@@ -14,8 +14,11 @@ Uses [FullCalendar](https://github.com/fullcalendar/fullcalendar) for the Calend
 
 ## Hidden requirements
 
-1. User Password requirement: requires a digit & minimum length is 8
-2. User Email requirement: Needs to be unique.
+1. User Password requirement:
+    - At least 1 digit
+    - Minimum length of 8
+2. User Email requirement:
+    - Needs to be unique.
 
 # Stretch Goal/ Potential TODOs
 
